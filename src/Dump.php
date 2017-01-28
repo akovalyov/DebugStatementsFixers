@@ -30,10 +30,14 @@ final class Dump extends AbstractFunctionReferenceFixer
                 if (null === $matches) {
                     break;
                 }
+
                 $match = array_keys($matches);
 
                 $funcStart = $tokens->getPrevNonWhitespace($match[0]);
 
+                if ($tokens[$funcStart]->isGivenKind(T_NEW)) {
+                    break;
+                }
                 $funcEnd = $tokens->getNextTokenOfKind($match[1], array(';'));
 
                 $tokens->clearRange($funcStart + 1, $funcEnd);

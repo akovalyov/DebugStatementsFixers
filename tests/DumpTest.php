@@ -1,15 +1,5 @@
 <?php
 
-/*
- * This file is part of PHP CS Fixer.
- *
- * (c) Fabien Potencier <fabien@symfony.com>
- *     Dariusz Rumiński <dariusz.ruminski@gmail.com>
- *
- * This source file is subject to the MIT license that is bundled
- * with this source code in the file LICENSE.
- */
-
 namespace Drew\RemoveDebugStatements\Tests;
 
 use Drew\DebugStatementsFixers\Dump;
@@ -24,13 +14,15 @@ final class DumpTest extends AbstractFixerTestCase
 {
     /**
      * @dataProvider provideFixCases
+     * @param mixed $expected
+     * @param null|mixed $input
      */
     public function testFix($expected, $input = null)
     {
         $this->doTest($expected, $input);
     }
 
-    function createFixer()
+    public function createFixer()
     {
         return new Dump();
     }
@@ -74,6 +66,17 @@ dump($b);
                 echo "The world has changed";
                 var_dump(false);
             }
+            ',
+            ),
+            array(
+                '<?php
+            class Dump{}
+            new Dump();
+            '),
+            array(
+                '<?php
+            class dump{}
+            new dump();
             ',
             ),
         );
