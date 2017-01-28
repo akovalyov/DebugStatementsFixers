@@ -1,0 +1,25 @@
+{
+    "name": "drew/debug-statements-fixers",
+    "description": "Removes debug statements, which shouldn't be in production ever",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrew Kovalyov",
+            "email": "andrew.kovalyoff@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4" : {
+            "Drew\\DebugStatementsFixers\\" : "src/"
+        }
+    },
+    "require": {
+        "friendsofphp/php-cs-fixer": "^2.0"
+    },
+    "require-dev": {
+        "gecko-packages/gecko-php-unit": "^2.0",
+        "phpunit/phpunit": "^4.5|^5",
+        "satooshi/php-coveralls": "^1.0"
+    }
+}
