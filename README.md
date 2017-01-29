@@ -41,7 +41,7 @@ it was considered too risky to have it in core (see discussion at https://github
 
 #### Protip!
 
-Works best when integrated with you CI server, just add this step to your CI config:
+Works best when integrated with your CI server, just add this step to your CI config:
 
 ```bash
 $ php vendor/bin/php-cs-fixer fix --diff --dry-run -v
