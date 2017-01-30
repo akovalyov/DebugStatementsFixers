@@ -31,6 +31,7 @@ it was considered too risky to have it in core (see discussion at https://github
 
     return PhpCsFixer\Config::create()
         ->setRules([
+            //any fixers you would like to have
             'RemoveDebugStatements/dump' => true,
         ])
         ->registerCustomFixers([new Drew\DebugStatementsFixers\Dump()])
