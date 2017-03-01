@@ -1,0 +1,28 @@
+<?php
+
+$finder = PhpCsFixer\Finder::create()
+    ->in([__DIR__.'/src', __DIR__.'/tests']);
+
+return PhpCsFixer\Config::create()
+    ->setRules([
+        '@PSR2'                                         => true,
+        'binary_operator_spaces'                        => ['align_double_arrow' => true, 'align_equals' => true],
+        'no_multiline_whitespace_before_semicolons'     => true,
+        'array_syntax'                                  => ['syntax' => 'long'],
+        'linebreak_after_opening_tag'                   => true,
+        'phpdoc_order'                                  => true,
+        'no_extra_consecutive_blank_lines'              => ['break', 'continue', 'extra', 'return', 'throw', 'use', 'parenthesis_brace_block', 'square_brace_block', 'curly_brace_block'],
+        'no_useless_else'                               => true,
+        'no_useless_return'                             => true,
+        'ordered_class_elements'                        => true,
+        'ordered_imports'                               => true,
+        'php_unit_strict'                               => true,
+        'phpdoc_add_missing_param_annotation'           => true,
+        'psr4'                                          => true,
+        'strict_comparison'                             => true,
+        'strict_param'                                  => true,
+        'RemoveDebugStatements/dump'                    => true,
+    ])
+    ->registerCustomFixers([new Drew\DebugStatementsFixers\Dump()])
+    ->setRiskyAllowed(true)
+    ->setFinder($finder);

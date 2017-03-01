@@ -3,6 +3,8 @@
 namespace Drew\DebugStatementsFixers;
 
 use PhpCsFixer\AbstractFunctionReferenceFixer;
+use PhpCsFixer\FixerDefinition\CodeSample;
+use PhpCsFixer\FixerDefinition\FixerDefinition;
 use PhpCsFixer\Tokenizer\Tokens;
 
 /**
@@ -67,5 +69,16 @@ final class Dump extends AbstractFunctionReferenceFixer
     public function getName()
     {
         return 'RemoveDebugStatements/dump';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDefinition()
+    {
+        return new FixerDefinition(
+            'Removes dump/var_dump statements, which shouldn\'t be in production ever.',
+            array(new CodeSample("<?php\nvar_dump(false);"))
+        );
     }
 }
