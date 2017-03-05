@@ -22,25 +22,22 @@ final class Dump extends AbstractFunctionReferenceFixer
      */
     public function fix(\SplFileInfo $file, Tokens $tokens)
     {
-        $end = $tokens->count() - 1;
-
         foreach ($this->functions as $function) {
             $currIndex = 0;
             while (null !== $currIndex) {
-                $matches = $tokens->findSequence(array(array(T_STRING, $function), '('), $currIndex, $end, false);
+                $matches = $this->find($function, $tokens, $currIndex);
 
                 if (null === $matches) {
                     break;
                 }
 
-                $match = array_keys($matches);
+                $funcStart = $tokens->getPrevNonWhitespace($matches[0]);
 
-                $funcStart = $tokens->getPrevNonWhitespace($match[0]);
-
-                if ($tokens[$funcStart]->isGivenKind(T_NEW)) {
+                if ($tokens[$funcStart]->isGivenKind(T_NEW) || $tokens[$funcStart]->isGivenKind(T_FUNCTION)) {
                     break;
                 }
-                $funcEnd = $tokens->getNextTokenOfKind($match[1], array(';'));
+
+                $funcEnd = $tokens->getNextTokenOfKind($matches[1], array(';'));
 
                 $tokens->clearRange($funcStart + 1, $funcEnd);
             }
@@ -53,14 +50,6 @@ final class Dump extends AbstractFunctionReferenceFixer
     public function isCandidate(Tokens $tokens)
     {
         return $tokens->isTokenKindFound(T_STRING);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function isRisky()
-    {
-        return true;
     }
 
     /**

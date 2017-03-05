@@ -79,6 +79,17 @@ dump($b);
             new dump();
             ',
             ),
+            array(
+                '<?php
+            class dump{ public function dump(){} }
+            new dump();
+            '),
+            array(
+                '<?php
+            class dump{ function dump(){} }
+            new dump();
+            ',
+            ),
         );
     }
 }
