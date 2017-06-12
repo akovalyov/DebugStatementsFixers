@@ -1,6 +1,13 @@
 # Debug Statements Fixers
 Fixers set for PHP-CS-Fixer. Removes debug statements, which shouldn't be in production ever. 
 
+![PHP 7.0](https://img.shields.io/badge/PHP-7.0-8C9CB6.svg?style=flat)
+[![Build Status](https://travis-ci.org/akovalyov/DebugStatementsFixers.svg?branch=master)](https://travis-ci.org/akovalyov/DebugStatementsFixers)
+[![Latest Stable Version](https://poser.pugx.org/akovalyov/DebugStatementsFixers/v/stable)](https://packagist.org/packages/akovalyov/DebugStatementsFixers)
+[![Total Downloads](https://poser.pugx.org/akovalyov/DebugStatementsFixers/downloads)](https://packagist.org/packages/akovalyov/DebugStatementsFixers)
+[![License](https://poser.pugx.org/akovalyov/DebugStatementsFixers/license)](https://packagist.org/packages/akovalyov/DebugStatementsFixers)
+[![Coverage Status](https://coveralls.io/repos/github/akovalyov/DebugStatementsFixers/badge.svg?branch=master)](https://coveralls.io/github/akovalyov/DebugStatementsFixers?branch=master)
+
 If you have ever had 500 Error on production because `dump` function is missing, 
 or you forget to remove debug statements time to time - this small package is for you.
 
