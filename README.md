@@ -24,7 +24,7 @@ it was considered too risky to have it in core (see discussion at https://github
 1. Install it:
     
     ```bash
-    $ composer require drew/debug-statements-fixers:^0.1 --dev
+    $ composer require drew/debug-statements-fixers:^0.4 --dev
     ```
 
 2. Adjust your PHP-CS-Fixer config:
