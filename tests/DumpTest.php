@@ -90,6 +90,14 @@ dump($b);
             new dump();
             ',
             ),
+            array(
+                '<?php
+                echo "The world has changed";
+            ',
+                '<?php
+                echo "The world has changed";dd($_SERVER);
+            ',
+            ),
         );
     }
 }

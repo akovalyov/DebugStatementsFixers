@@ -18,6 +18,11 @@ it was considered too risky to have it in core (see discussion at https://github
 
 *N.B.* These fixers are risky and potentially can break your application. You should understand consequences of having it in your project (especially a legacy one). You are warned.
 
+## Functions being removed:
+
+* dump
+* var_dump
+* [dd](https://github.com/symfony/symfony/pull/26970)
 
 ## Usage
 
