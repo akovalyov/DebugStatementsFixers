@@ -15,7 +15,7 @@ final class Dump extends AbstractFunctionReferenceFixer
     /**
      * @var array
      */
-    private $functions = array('dump', 'var_dump');
+    private $functions = array('dump', 'var_dump', 'dd');
 
     /**
      * {@inheritdoc}

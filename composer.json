@@ -14,6 +14,11 @@
             "Drew\\DebugStatementsFixers\\" : "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "PhpCsFixer\\Tests\\": "vendor/friendsofphp/php-cs-fixer/tests/"
+        }
+    },
     "require": {
         "friendsofphp/php-cs-fixer": "^2.0"
     },
