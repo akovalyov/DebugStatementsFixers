@@ -7,7 +7,7 @@ Fixers set for PHP-CS-Fixer. Removes debug statements, which shouldn't be in pro
 [![Total Downloads](https://poser.pugx.org/drew/debug-statements-fixers/downloads)](https://packagist.org/packages/drew/debug-statements-fixers)
 [![License](https://poser.pugx.org/drew/debug-statements-fixers/license)](https://packagist.org/packages/drew/debug-statements-fixers)
 
-If you have ever had 500 Error on production because `dump` function is missing, 
+If you have ever had 500 Error on production because `dump()` function is missing, 
 or you forget to remove debug statements time to time - this small package is for you.
 
 Debug statements are good for debugging, but it should never get to master branch.
@@ -19,9 +19,9 @@ it was considered too risky to have it in core (see discussion at https://github
 
 ## Functions being removed:
 
-* dump
-* var_dump
-* [dd](https://github.com/symfony/symfony/pull/26970)
+* dump()
+* var_dump()
+* [dd()](https://github.com/symfony/symfony/pull/26970)
 
 ## Usage
 
