@@ -20,7 +20,7 @@
         }
     },
     "require": {
-        "friendsofphp/php-cs-fixer": "^2.0"
+        "friendsofphp/php-cs-fixer": "^2.0 || ^3.0"
     },
     "require-dev": {
         "gecko-packages/gecko-php-unit": "^2.0 || ^3.0",
