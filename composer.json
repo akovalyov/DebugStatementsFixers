@@ -16,15 +16,15 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "PhpCsFixer\\Tests\\": "vendor/friendsofphp/php-cs-fixer/tests/"
+            "Drew\\RemoveDebugStatements\\Tests\\": "tests/"
         }
     },
     "require": {
-        "friendsofphp/php-cs-fixer": "^2.0"
+        "php": "^7.1 || ^8.0",
+        "friendsofphp/php-cs-fixer": "^3.0"
     },
     "require-dev": {
-        "gecko-packages/gecko-php-unit": "^2.0 || ^3.0",
-        "phpunit/phpunit": "^4.5|^5|^6",
-        "satooshi/php-coveralls": "^1.0 || ^2.0"
+        "phpunit/phpunit": "^8.5",
+        "php-coveralls/php-coveralls": "^2.4"
     }
 }
