@@ -182,7 +182,7 @@ abstract class AbstractFixerTestCase extends TestCase
             $options = $this->fixer->getConfigurationDefinition()->getOptions();
 
             foreach ($options as $option) {
-                static::assertMatchesRegularExpression('/^[a-z_]+[a-z]$/', $option->getName(), sprintf('[%s] Option %s is not snake_case.', $fixerName, $option->getName()));
+                static::assertRegExp('/^[a-z_]+[a-z]$/', $option->getName(), sprintf('[%s] Option %s is not snake_case.', $fixerName, $option->getName()));
             }
         }
     }
@@ -381,11 +381,8 @@ abstract class AbstractFixerTestCase extends TestCase
                 $this->fixer->fix($file, $tokens);
             }
 
-            static::assertThat(
-                $tokens->generateCode(),
-                new IsIdenticalString($expected),
-                'Code build on input code must match expected code.'
-            );
+            
+            static::assertSame($expected, $tokens->generateCode(), 'Code build on input code must match expected code.');
             static::assertTrue($tokens->isChanged(), 'Tokens collection built on input code must be marked as changed after fixing.');
 
             $tokens->clearEmptyTokens();
@@ -412,11 +409,7 @@ abstract class AbstractFixerTestCase extends TestCase
             $this->fixer->fix($file, $tokens);
         }
 
-        static::assertThat(
-            $tokens->generateCode(),
-            new IsIdenticalString($expected),
-            'Code build on expected code must not change.'
-        );
+        static::assertSame($expected, $tokens->generateCode(), 'Code build on expected code must not change.');
         static::assertFalse($tokens->isChanged(), 'Tokens collection built on expected code must not be marked as changed after fixing.');
     }
 
@@ -446,7 +439,7 @@ abstract class AbstractFixerTestCase extends TestCase
 
     private static function assertValidDescription(string $fixerName, string $descriptionType, string $description): void
     {
-        static::assertMatchesRegularExpression('/^[A-Z`][^"]+\.$/', $description, sprintf('[%s] The %s must start with capital letter or a ` and end with dot.', $fixerName, $descriptionType));
+        static::assertRegExp('/^[A-Z`][^"]+\.$/', $description, sprintf('[%s] The %s must start with capital letter or a ` and end with dot.', $fixerName, $descriptionType));
         static::assertStringNotContainsString('phpdocs', $description, sprintf('[%s] `PHPDoc` must not be in the plural in %s.', $fixerName, $descriptionType));
         static::assertCorrectCasing($description, 'PHPDoc', sprintf('[%s] `PHPDoc` must be in correct casing in %s.', $fixerName, $descriptionType));
         static::assertCorrectCasing($description, 'PHPUnit', sprintf('[%s] `PHPUnit` must be in correct casing in %s.', $fixerName, $descriptionType));

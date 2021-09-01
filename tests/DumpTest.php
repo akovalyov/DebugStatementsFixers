@@ -3,7 +3,7 @@
 namespace Drew\RemoveDebugStatements\Tests;
 
 use Drew\DebugStatementsFixers\Dump;
-use PhpCsFixer\Test\AbstractFixerTestCase;
+use PhpCsFixer\AbstractFixer;
 
 /**
  * @author Andrew Kovalyov <andrew.kovalyoff@gmail.com>
@@ -22,20 +22,20 @@ final class DumpTest extends AbstractFixerTestCase
         $this->doTest($expected, $input);
     }
 
-    public function createFixer()
+    public function createFixer(): AbstractFixer
     {
         return new Dump();
     }
 
-    public function provideFixCases()
+    public function provideFixCases(): array
     {
-        return array(
-            array('<?php echo "This should not be changed";'),
-            array(
+        return [
+            ['<?php echo "This should not be changed";'],
+            [
                 '<?php echo "This should be changed";',
                 '<?php echo "This should be changed"; var_dump(true);',
-            ),
-            array(
+            ],
+            [
                 '
 <?php 
 $a = 1;
@@ -49,8 +49,8 @@ var_dump($a);
 $b = 1;
 dump($b);
 ',
-            ),
-            array(
+            ],
+            [
                 '<?php
             if(1 === 1) {
             }
@@ -67,37 +67,39 @@ dump($b);
                 var_dump(false);
             }
             ',
-            ),
-            array(
+            ],
+            [
                 '<?php
             class Dump{}
             new Dump();
-            '),
-            array(
+            '
+            ],
+            [
                 '<?php
             class dump{}
             new dump();
             ',
-            ),
-            array(
+            ],
+            [
                 '<?php
             class dump{ public function dump(){} }
             new dump();
-            '),
-            array(
+            '
+            ],
+            [
                 '<?php
             class dump{ function dump(){} }
             new dump();
             ',
-            ),
-            array(
+            ],
+            [
                 '<?php
                 echo "The world has changed";
             ',
                 '<?php
                 echo "The world has changed";dd($_SERVER);
             ',
-            ),
-        );
+            ],
+        ];
     }
 }
